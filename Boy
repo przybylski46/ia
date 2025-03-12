@@ -50,10 +50,10 @@ if not _G.Settings then
         },
         MeshParts = {
             LowerQuality = true,
-            Invisible = false,
+            Invisible = true,
             NoTexture = true,
             NoMesh = true,
-            Destroy = false
+            Destroy = true
         },
         Other = {
             ["FPS Cap"] = 120, -- ilimitados con true
@@ -212,7 +212,7 @@ coroutine.wrap(pcall)(function()
             sethiddenproperty(workspace:FindFirstChildOfClass("Terrain"), "Decoration", false)
         else
             StarterGui:SetCore("SendNotification", {
-                Title = "Boykisser",
+                Title = "Tonto",
                 Text = "Tu exploit no admite sethiddenproperty, utiliza un exploit diferente.",
                 Duration = 5,
                 Button1 = "Ok"
