@@ -26,9 +26,9 @@ if not _G.Settings then
             ["Ignore Tools"] = true
         },
         Meshes = {
-            NoMesh = false,
+            NoMesh = true,
             NoTexture = true,
-            Destroy = false
+            Destroy = true
         },
         Images = {
             Invisible = true,
@@ -36,8 +36,8 @@ if not _G.Settings then
         },
         Explosions = {
             Smaller = true,
-            Invisible = false, -- Not recommended for PVP games
-            Destroy = false -- Not recommended for PVP games
+            Invisible = true, -- Not recommended for PVP games
+            Destroy = true -- Not recommended for PVP games
         },
         Particles = {
             Invisible = true,
