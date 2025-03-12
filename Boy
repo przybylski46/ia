@@ -238,7 +238,7 @@ coroutine.wrap(pcall)(function()
         Lighting.FogEnd = 9e9
         Lighting.ShadowSoftness = 0
         if sethiddenproperty then
-            sethiddenproperty(Lighting, "Technology", 2)
+            sethiddenproperty(Lighting, "Technology", 1)
         else
             StarterGui:SetCore("SendNotification", {
                 Title = "Boykisser",
