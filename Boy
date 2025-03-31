@@ -1,13 +1,12 @@
 if not _G.Ignore then
-    _G.Ignore = {} -- Add Instances to this table to ignore them (e.g. _G.Ignore = {workspace.Map, workspace.Map2})
+    _G.Ignore = {} -- (e.g. _G.Ignore = {workspace.Map, workspace.Map2})
 end
 if not _G.WaitPerAmount then
-    _G.WaitPerAmount = 500 -- 
+    _G.WaitPerAmount = 500
 if _G.SendNotifications == nil then
-    _G.SendNotifications = false
+    _G.SendNotifications = true
 if _G.ConsoleLogs == nil then
-    _G.ConsoleLogs = false -- Set to true if you want console logs (mainly for debugging)
-end
+    _G.ConsoleLogs = false
 
 
 
@@ -24,8 +23,8 @@ if not _G.Settings then
             ["Ignore Tools"] = true
         },
         Meshes = {
-            NoMesh = true,
-            NoTexture = true,
+            NoMesh = false,
+            NoTexture = false,
             Destroy = true
         },
         Images = {
@@ -34,11 +33,11 @@ if not _G.Settings then
         },
         Explosions = {
             Smaller = true,
-            Invisible = true, -- Not recommended for PVP games
-            Destroy = true -- Not recommended for PVP games
+            Invisible = false,
+            Destroy = true
         },
         Particles = {
-            Invisible = true,
+            Invisible = false,
             Destroy = true
         },
         TextLabels = {
@@ -48,13 +47,13 @@ if not _G.Settings then
         },
         MeshParts = {
             LowerQuality = true,
-            Invisible = true,
-            NoTexture = true,
-            NoMesh = true,
+            Invisible = false,
+            NoTexture = false,
+            NoMesh = false,
             Destroy = true
         },
         Other = {
-            ["FPS Cap"] = 120, -- ilimitados con true
+            ["FPS Cap"] = 120,
             ["No Camera Effects"] = true,
             ["No Clothes"] = true,
             ["Low Water Graphics"] = true,
@@ -187,14 +186,6 @@ local function CheckIfBad(Instance)
         end
     end
 end
-if _G.SendNotifications then
-    StarterGui:SetCore("SendNotification", {
-        Title = "Boykisser",
-        Text = "You like kissing boys",
-        Duration = math.huge,
-        Button1 = "dont you"
-    })
-end
 coroutine.wrap(pcall)(function()
     if (_G.Settings["Low Water Graphics"] or (_G.Settings.Other and _G.Settings.Other["Low Water Graphics"])) then
         if not workspace:FindFirstChildOfClass("Terrain") then
@@ -209,25 +200,6 @@ coroutine.wrap(pcall)(function()
         if sethiddenproperty then
             sethiddenproperty(workspace:FindFirstChildOfClass("Terrain"), "Decoration", false)
         else
-            StarterGui:SetCore("SendNotification", {
-                Title = "Tonto",
-                Text = "Tu exploit no admite sethiddenproperty, utiliza un exploit diferente.",
-                Duration = 5,
-                Button1 = "Ok"
-            })
-            warn("Tu exploit no admite sethiddenproperty, utiliza un exploit diferente.")
-        end
-        if _G.SendNotifications then
-            StarterGui:SetCore("SendNotification", {
-                Title = "Boykisser",
-                Text = "Low Water Graphics Enabled",
-                Duration = 5,
-                Button1 = "Ok"
-            })
-        end
-        if _G.ConsoleLogs then
-            warn("Low Water Graphics Enabled")
-        end
     end
 end)
 coroutine.wrap(pcall)(function()
@@ -236,44 +208,14 @@ coroutine.wrap(pcall)(function()
         Lighting.FogEnd = 9e9
         Lighting.ShadowSoftness = 0
         if sethiddenproperty then
-            sethiddenproperty(Lighting, "Technology", 1)
+            sethiddenproperty(Lighting, "Technology", 2)
         else
-            StarterGui:SetCore("SendNotification", {
-                Title = "Boykisser",
-                Text = "Tu exploit no admite sethiddenproperty, utiliza un exploit diferente.",
-                Duration = 5,
-                Button1 = "Ok"
-            })
-            warn("Tu exploit no admite sethiddenproperty, utiliza un exploit diferente.")
-        end
-        if _G.SendNotifications then
-            StarterGui:SetCore("SendNotification", {
-                Title = "Boykisser",
-                Text = "No shadows",
-                Duration = 5,
-                Button1 = "Ok"
-            })
-        end
-        if _G.ConsoleLogs then
-            warn("No Shadows Enabled")
-        end
     end
 end)
 coroutine.wrap(pcall)(function()
     if _G.Settings["Low Rendering"] or (_G.Settings.Other and _G.Settings.Other["Low Rendering"]) then
         settings().Rendering.QualityLevel = 1
         settings().Rendering.MeshPartDetailLevel = Enum.MeshPartDetailLevel.Level04
-        if _G.SendNotifications then
-            StarterGui:SetCore("SendNotification", {
-                Title = "Boykisser",
-                Text = "Low Rendering",
-                Duration = 5,
-                Button1 = "Ok"
-            })
-        end
-        if _G.ConsoleLogs then
-            warn("Low Rendering Enabled")
-        end
     end
 end)
 coroutine.wrap(pcall)(function()
@@ -282,14 +224,6 @@ coroutine.wrap(pcall)(function()
             v:Destroy()
         end
         MaterialService.Use2022Materials = false
-        if _G.SendNotifications then
-            StarterGui:SetCore("SendNotification", {
-                Title = "Boykisser",
-                Text = "Reset Materials",
-                Duration = 5,
-                Button1 = "Ok"
-            })
-        end
         if _G.ConsoleLogs then
             warn("Reset Materials Enabled")
         end
@@ -300,39 +234,13 @@ coroutine.wrap(pcall)(function()
         if setfpscap then
             if type(_G.Settings["FPS Cap"] or (_G.Settings.Other and _G.Settings.Other["FPS Cap"])) == "string" or type(_G.Settings["FPS Cap"] or (_G.Settings.Other and _G.Settings.Other["FPS Cap"])) == "number" then
                 setfpscap(tonumber(_G.Settings["FPS Cap"] or (_G.Settings.Other and _G.Settings.Other["FPS Cap"])))
-                if _G.SendNotifications then
-                    StarterGui:SetCore("SendNotification", {
-                        Title = "Boykisser",
-                        Text = "FPS limitados a " .. tostring(_G.Settings["FPS Cap"] or (_G.Settings.Other and _G.Settings.Other["FPS Cap"])),
-                        Duration = 5,
-                        Button1 = "Okay"
-                    })
-                end
+               
                 if _G.ConsoleLogs then
                     warn("FPS Capped to " .. tostring(_G.Settings["FPS Cap"] or (_G.Settings.Other and _G.Settings.Other["FPS Cap"])))
                 end
             elseif _G.Settings["FPS Cap"] or (_G.Settings.Other and _G.Settings.Other["FPS Cap"]) == true then
                 setfpscap(1e6)
-                if _G.SendNotifications then
-                    StarterGui:SetCore("SendNotification", {
-                        Title = "Boykisser",
-                        Text = "FPS sin limite",
-                        Duration = 5,
-                        Button1 = "Ok"
-                    })
-                end
-                if _G.ConsoleLogs then
-                    warn("FPS Uncapped")
-                end
             end
-        else
-            StarterGui:SetCore("SendNotification", {
-                Title = "Boykisser",
-                Text = "No se ha podido limitar los FPS",
-                Duration = math.huge,
-                Button1 = "Ok"
-            })
-            warn("FPS Cap Failed")
         end
     end
 end)
@@ -343,16 +251,8 @@ end)
 local Descendants = game:GetDescendants()
 local StartNumber = _G.WaitPerAmount or 500
 local WaitNumber = _G.WaitPerAmount or 500
-if _G.SendNotifications then
-    StarterGui:SetCore("SendNotification", {
-        Title = "Boykisser",
-        Text = "Erm " .. #Descendants .. " Instances...",
-        Duration = 15,
-        Button1 = "Okay"
-    })
-end
 if _G.ConsoleLogs then
-    warn("Checking " .. #Descendants .. " Instances...")
+    warn("Checking")
 end
 for i, v in pairs(Descendants) do
     CheckIfBad(v)
@@ -365,12 +265,11 @@ for i, v in pairs(Descendants) do
     end
 end
 StarterGui:SetCore("SendNotification", {
-    Title = "Boykisser",
-    Text = "Acabaste",
-    Duration = math.huge,
-    Button1 = "Kiss"
+    Title = "FPS boost",
+    Text = "✅",
+    Duration = 5
 })
-warn("Proceso Completo")
+warn("FPS Booster Loaded!")
 --game.DescendantAdded:Connect(CheckIfBad)
 --[[game.DescendantAdded:Connect(function(value)
     CheckIfBad(value)
